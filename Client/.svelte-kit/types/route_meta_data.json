@@ -1,0 +1,8 @@
+{
+	"/": [
+		"src/routes/+page.js"
+	],
+	"/admin/dashboard": [],
+	"/login/admin": [],
+	"/login/employee": []
+}

@@ -1,2 +1,226 @@
-@import '@fontsource/fira-mono';
 @import "tailwindcss";
+
+/* Tailwind CSS v4 Theme Configuration */
+@theme {
+  /* Primary color - #0f9eef */
+  --color-primary-50: #f0f8ff;
+  --color-primary-100: #e0f0fe;
+  --color-primary-200: #bae3fd;
+  --color-primary-300: #7dcdfc;
+  --color-primary-400: #39b3f7;
+  --color-primary-500: #0f9eef;
+  --color-primary-600: #037ac6;
+  --color-primary-700: #0361a1;
+  --color-primary-800: #075385;
+  --color-primary-900: #0c456e;
+  --color-primary-950: #082c49;
+
+  /* Secondary color */
+  --color-secondary-50: #fffaec;
+  --color-secondary-100: #fff4d3;
+  --color-secondary-200: #ffe5a5;
+  --color-secondary-300: #ffd16d;
+  --color-secondary-400: #ffb232;
+  --color-secondary-500: #ff980a;
+  --color-secondary-600: #ed7700;
+  --color-secondary-700: #cc5d02;
+  --color-secondary-800: #a1480b;
+  --color-secondary-900: #823d0c;
+  --color-secondary-950: #461d04  ;
+
+  /* Custom Animations */
+  --animate-shimmer: shimmer 2s infinite;
+  --animate-blob: blob 7s infinite;
+  --animate-bounce-custom: bounce-custom 1s infinite;
+}
+
+/* Keyframe Animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes bounce-custom {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom Utility Classes */
+.animate-shimmer {
+  animation: var(--animate-shimmer);
+}
+
+.animate-blob {
+  animation: var(--animate-blob);
+}
+
+.animate-bounce-custom {
+  animation: var(--animate-bounce-custom);
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Component Classes */
+.btn-primary {
+  padding: 0.5rem 1rem;
+  background-color: theme('colors.primary.600');
+  color: white;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary:hover {
+  background-color: theme('colors.primary.700');
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:disabled {
+  background-color: theme('colors.primary.400');
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn-secondary {
+  padding: 0.5rem 1rem;
+  background-color: #e5e7eb;
+  color: #1f2937;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.dark .btn-secondary {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+.btn-secondary:hover {
+  background-color: #d1d5db;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #4b5563;
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+}
+
+.dark .card {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  color: #1f2937;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.dark .input-field {
+  border-color: #4b5563;
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+.input-field:focus {
+  border-color: theme('colors.primary.500');
+  outline: 2px solid theme('colors.primary.500');
+  outline-offset: 2px;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-success {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.dark .badge-success {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+}
+
+.badge-warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.dark .badge-warning {
+  background-color: rgba(234, 179, 8, 0.2);
+  color: #fde047;
+}
+
+.badge-danger {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.dark .badge-danger {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+.badge-info {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.dark .badge-info {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+/* Base Styles */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+}
