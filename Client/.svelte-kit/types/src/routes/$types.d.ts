@@ -11,16 +11,10 @@ type OutputDataShape<T> = MaybeWithVoid<Omit<App.PageData, RequiredKeys<T>> & Pa
 type EnsureDefined<T> = T extends null | undefined ? {} : T;
 type OptionalUnion<U extends Record<string, any>, A extends keyof U = U extends U ? keyof U : never> = U extends unknown ? { [P in Exclude<A, keyof U>]?: never } & U : never;
 export type Snapshot<T = any> = Kit.Snapshot<T>;
-type PageParentData = EnsureDefined<LayoutData>;
-type LayoutRouteId = RouteId | "/" | "/admin/dashboard" | "/login/admin" | "/login/employee" | null
-type LayoutParams = RouteParams & {  }
+type LayoutRouteId = RouteId | "/(admin)/admin/dashboard" | "/(admin)/admin/profile" | "/(admin)/admin/projects" | "/(admin)/admin/projects/new" | "/(admin)/admin/projects/[id]" | "/(admin)/admin/reports" | "/(admin)/admin/tasks" | "/(admin)/admin/tasks/new" | "/(admin)/admin/tasks/[id]" | "/(admin)/admin/team" | "/(admin)/admin/team/[id]" | "/(auth)" | "/(auth)/login/admin" | "/(auth)/login/employee" | "/(employee)/employee" | "/(employee)/employee/dashboard" | null
+type LayoutParams = RouteParams & { id?: string }
 type LayoutParentData = EnsureDefined<{}>;
 
-export type PageServerData = null;
-export type PageLoad<OutputData extends OutputDataShape<PageParentData> = OutputDataShape<PageParentData>> = Kit.Load<RouteParams, PageServerData, PageParentData, OutputData, RouteId>;
-export type PageLoadEvent = Parameters<PageLoad>[0];
-export type PageData = Expand<Omit<PageParentData, keyof PageParentData & EnsureDefined<PageServerData>> & OptionalUnion<EnsureDefined<PageParentData & EnsureDefined<PageServerData>>>>;
-export type PageProps = { params: RouteParams; data: PageData }
 export type LayoutServerData = null;
 export type LayoutData = Expand<LayoutParentData>;
 export type LayoutProps = { params: LayoutParams; data: LayoutData; children: import("svelte").Snippet }

@@ -1,8 +1,20 @@
 {
-	"/": [
-		"src/routes/+page.js"
-	],
-	"/admin/dashboard": [],
-	"/login/admin": [],
-	"/login/employee": []
+	"/(auth)": [],
+	"/": [],
+	"/(admin)/admin": [],
+	"/(admin)/admin/dashboard": [],
+	"/(admin)/admin/profile": [],
+	"/(admin)/admin/projects": [],
+	"/(admin)/admin/projects/new": [],
+	"/(admin)/admin/projects/[id]": [],
+	"/(admin)/admin/reports": [],
+	"/(admin)/admin/tasks": [],
+	"/(admin)/admin/tasks/new": [],
+	"/(admin)/admin/tasks/[id]": [],
+	"/(admin)/admin/team": [],
+	"/(admin)/admin/team/[id]": [],
+	"/(employee)/employee": [],
+	"/(employee)/employee/dashboard": [],
+	"/(auth)/login/admin": [],
+	"/(auth)/login/employee": []
 }
