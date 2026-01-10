@@ -27,7 +27,7 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/(employee)" | "/(auth)" | "/(admin)" | "/" | "/(admin)/admin" | "/(admin)/admin/dashboard" | "/(admin)/admin/profile" | "/(admin)/admin/projects" | "/(admin)/admin/projects/new" | "/(admin)/admin/projects/[id]" | "/(admin)/admin/projects/[id]/edit" | "/(admin)/admin/reports" | "/(admin)/admin/tasks" | "/(admin)/admin/tasks/new" | "/(admin)/admin/tasks/[id]" | "/(admin)/admin/team" | "/(admin)/admin/team/[id]" | "/(employee)/employee" | "/(employee)/employee/dashboard" | "/(auth)/login" | "/(auth)/login/admin" | "/(auth)/login/employee";
+		RouteId(): "/(employee)" | "/(auth)" | "/(admin)" | "/" | "/(admin)/admin" | "/(admin)/admin/dashboard" | "/(admin)/admin/profile" | "/(admin)/admin/projects" | "/(admin)/admin/projects/new" | "/(admin)/admin/projects/[id]" | "/(admin)/admin/projects/[id]/edit" | "/(admin)/admin/reports" | "/(admin)/admin/tasks" | "/(admin)/admin/tasks/new" | "/(admin)/admin/tasks/[id]" | "/(admin)/admin/team" | "/(admin)/admin/team/[id]" | "/(employee)/employee" | "/(employee)/employee/dashboard" | "/(employee)/employee/profile" | "/(employee)/employee/projects" | "/(employee)/employee/tasks" | "/(employee)/employee/timesheet" | "/(auth)/login" | "/(auth)/login/admin" | "/(auth)/login/employee";
 		RouteParams(): {
 			"/(admin)/admin/projects/[id]": { id: string };
 			"/(admin)/admin/projects/[id]/edit": { id: string };
@@ -54,11 +54,15 @@ declare module "$app/types" {
 			"/(admin)/admin/team/[id]": { id: string };
 			"/(employee)/employee": Record<string, never>;
 			"/(employee)/employee/dashboard": Record<string, never>;
+			"/(employee)/employee/profile": Record<string, never>;
+			"/(employee)/employee/projects": Record<string, never>;
+			"/(employee)/employee/tasks": Record<string, never>;
+			"/(employee)/employee/timesheet": Record<string, never>;
 			"/(auth)/login": Record<string, never>;
 			"/(auth)/login/admin": Record<string, never>;
 			"/(auth)/login/employee": Record<string, never>
 		};
-		Pathname(): "/" | "/admin" | "/admin/" | "/admin/dashboard" | "/admin/dashboard/" | "/admin/profile" | "/admin/profile/" | "/admin/projects" | "/admin/projects/" | "/admin/projects/new" | "/admin/projects/new/" | `/admin/projects/${string}` & {} | `/admin/projects/${string}/` & {} | `/admin/projects/${string}/edit` & {} | `/admin/projects/${string}/edit/` & {} | "/admin/reports" | "/admin/reports/" | "/admin/tasks" | "/admin/tasks/" | "/admin/tasks/new" | "/admin/tasks/new/" | `/admin/tasks/${string}` & {} | `/admin/tasks/${string}/` & {} | "/admin/team" | "/admin/team/" | `/admin/team/${string}` & {} | `/admin/team/${string}/` & {} | "/employee" | "/employee/" | "/employee/dashboard" | "/employee/dashboard/" | "/login" | "/login/" | "/login/admin" | "/login/admin/" | "/login/employee" | "/login/employee/";
+		Pathname(): "/" | "/admin" | "/admin/" | "/admin/dashboard" | "/admin/dashboard/" | "/admin/profile" | "/admin/profile/" | "/admin/projects" | "/admin/projects/" | "/admin/projects/new" | "/admin/projects/new/" | `/admin/projects/${string}` & {} | `/admin/projects/${string}/` & {} | `/admin/projects/${string}/edit` & {} | `/admin/projects/${string}/edit/` & {} | "/admin/reports" | "/admin/reports/" | "/admin/tasks" | "/admin/tasks/" | "/admin/tasks/new" | "/admin/tasks/new/" | `/admin/tasks/${string}` & {} | `/admin/tasks/${string}/` & {} | "/admin/team" | "/admin/team/" | `/admin/team/${string}` & {} | `/admin/team/${string}/` & {} | "/employee" | "/employee/" | "/employee/dashboard" | "/employee/dashboard/" | "/employee/profile" | "/employee/profile/" | "/employee/projects" | "/employee/projects/" | "/employee/tasks" | "/employee/tasks/" | "/employee/timesheet" | "/employee/timesheet/" | "/login" | "/login/" | "/login/admin" | "/login/admin/" | "/login/employee" | "/login/employee/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/favicon.png" | "/Logo4.png" | "/robots.txt" | string & {};
 	}

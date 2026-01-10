@@ -11,7 +11,7 @@ type OutputDataShape<T> = MaybeWithVoid<Omit<App.PageData, RequiredKeys<T>> & Pa
 type EnsureDefined<T> = T extends null | undefined ? {} : T;
 type OptionalUnion<U extends Record<string, any>, A extends keyof U = U extends U ? keyof U : never> = U extends unknown ? { [P in Exclude<A, keyof U>]?: never } & U : never;
 export type Snapshot<T = any> = Kit.Snapshot<T>;
-type LayoutRouteId = RouteId | "/(admin)/admin/dashboard" | "/(admin)/admin/profile" | "/(admin)/admin/projects" | "/(admin)/admin/projects/new" | "/(admin)/admin/projects/[id]" | "/(admin)/admin/reports" | "/(admin)/admin/tasks" | "/(admin)/admin/tasks/new" | "/(admin)/admin/tasks/[id]" | "/(admin)/admin/team" | "/(admin)/admin/team/[id]" | "/(auth)" | "/(auth)/login/admin" | "/(auth)/login/employee" | "/(employee)/employee" | "/(employee)/employee/dashboard" | null
+type LayoutRouteId = RouteId | "/(admin)/admin/dashboard" | "/(admin)/admin/profile" | "/(admin)/admin/projects" | "/(admin)/admin/projects/new" | "/(admin)/admin/projects/[id]" | "/(admin)/admin/reports" | "/(admin)/admin/tasks" | "/(admin)/admin/tasks/new" | "/(admin)/admin/tasks/[id]" | "/(admin)/admin/team" | "/(admin)/admin/team/[id]" | "/(auth)" | "/(auth)/login/admin" | "/(auth)/login/employee" | "/(employee)/employee/dashboard" | "/(employee)/employee/profile" | "/(employee)/employee/projects" | "/(employee)/employee/tasks" | "/(employee)/employee/timesheet" | null
 type LayoutParams = RouteParams & { id?: string }
 type LayoutParentData = EnsureDefined<{}>;
 

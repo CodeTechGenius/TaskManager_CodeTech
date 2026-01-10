@@ -21,7 +21,10 @@ export const nodes = [
 	() => import('./nodes/17'),
 	() => import('./nodes/18'),
 	() => import('./nodes/19'),
-	() => import('./nodes/20')
+	() => import('./nodes/20'),
+	() => import('./nodes/21'),
+	() => import('./nodes/22'),
+	() => import('./nodes/23')
 ];
 
 export const server_loads = [];
@@ -39,8 +42,11 @@ export const dictionary = {
 		"/(admin)/admin/tasks/[id]": [13,[2]],
 		"/(admin)/admin/team": [14,[2]],
 		"/(admin)/admin/team/[id]": [15,[2]],
-		"/(employee)/employee": [19,[4]],
-		"/(employee)/employee/dashboard": [20,[4]],
+		"/(employee)/employee/dashboard": [19,[4]],
+		"/(employee)/employee/profile": [20,[4]],
+		"/(employee)/employee/projects": [21,[4]],
+		"/(employee)/employee/tasks": [22,[4]],
+		"/(employee)/employee/timesheet": [23,[4]],
 		"/(auth)/login/admin": [17,[3]],
 		"/(auth)/login/employee": [18,[3]]
 	};

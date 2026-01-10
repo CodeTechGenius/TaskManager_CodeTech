@@ -15,6 +15,10 @@
 	"/(admin)/admin/team/[id]": [],
 	"/(employee)/employee": [],
 	"/(employee)/employee/dashboard": [],
+	"/(employee)/employee/profile": [],
+	"/(employee)/employee/projects": [],
+	"/(employee)/employee/tasks": [],
+	"/(employee)/employee/timesheet": [],
 	"/(auth)/login/admin": [],
 	"/(auth)/login/employee": []
 }
