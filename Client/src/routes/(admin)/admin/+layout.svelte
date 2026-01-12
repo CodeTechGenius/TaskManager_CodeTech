@@ -52,8 +52,14 @@
 
           <!-- Logo -->
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-400 to-accent-600 flex items-center justify-center shadow-xl border-2 border-white/20">
-              <span class="text-2xl">📊</span>
+            <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-xl border-2 border-white/20">
+              <span class="text-2xl">
+                  <img 
+              src="/Logo4.png" 
+              alt="Code Tech Genius Logo" 
+              class="w-full h-full object-contain"
+            />
+              </span>
             </div>
             <div class="flex flex-col">
               <h1 class="text-xl font-black text-white tracking-tight">TaskFlow</h1>
