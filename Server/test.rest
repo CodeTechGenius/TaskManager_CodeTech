@@ -1,0 +1,17 @@
+###
+
+GET http://localhost:5174/api/db-test
+Content-Type: application/json
+
+###
+
+GET http://localhost:5174/api/user
+Content-Type: application/json
+
+
+https://the-treding-bulls-h5c0fbxiu-eagle-eye-services-projects.vercel.app/
+
+
+###
+GET https://the-treding-bulls.vercel.app/api/user
+Content-Type: application/json
