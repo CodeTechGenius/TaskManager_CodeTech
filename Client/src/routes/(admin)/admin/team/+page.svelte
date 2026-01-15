@@ -3,6 +3,7 @@
   import { goto } from "$app/navigation";
   import { fly, fade, scale } from "svelte/transition";
   import { flip } from "svelte/animate";
+    import { api } from "../../../../api/api";
 
   let teamMembers = [];
   let filteredMembers = [];
@@ -106,8 +107,7 @@
   async function loadTeamMembers() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      let response = await fetch(`http://localhost:5173/api/employee`);
-      let { success, data } = await response.json();
+      let {error,errorMsg,data} = await api.getEmployees({})
       console.log("result is", data);
       teamMembers = data;
 
@@ -365,6 +365,7 @@
   }
 
   async function saveEmployee() {
+    console.log('this function is called')
     if (!validateForm()) return;
 
     try {
@@ -430,23 +431,10 @@
           lastActive: "Just now",
         };
 
-        const response = await fetch("http://localhost:5173/api/employee", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newEmployee),
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-          console.error(result.error);
-        } else {
-          console.log("Employee created:", result.data);
+        let {error,errorMsg,data} = await api.addEmployee({newEmployee})
+        if(error){
+          return
         }
-        console.log("result is", result);
-
         teamMembers = [...teamMembers, newEmployee];
         showSuccess("Employee added successfully!");
         closeAddModal();

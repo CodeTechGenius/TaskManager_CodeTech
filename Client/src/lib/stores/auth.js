@@ -1,30 +1,17 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-function createAuthStore() {
-  const storedUser = browser ? localStorage.getItem('user') : null;
-  const initialUser = storedUser ? JSON.parse(storedUser) : null;
-  
-  const { subscribe, set, update } = writable(initialUser);
+const storedToken = browser ? localStorage.getItem('admin_token') : null;
+const storedUser = browser
+  ? JSON.parse(localStorage.getItem('admin_user'))
+  : null;
 
-  return {
-    subscribe,
-    login: (user) => {
-      if (browser) {
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', user.token);
-      }
-      set(user);
-    },
-    logout: () => {
-      if (browser) {
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-      }
-      set(null);
-    },
-    update
-  };
+export const adminToken = writable(storedToken);
+export const adminUser = writable(storedUser);
+
+if (browser) {
+    localStorage.setItem('admin_token', adminToken);
+    localStorage.setItem('admin_user', JSON.stringify(adminUser));
 }
 
-export const authStore = createAuthStore();
+

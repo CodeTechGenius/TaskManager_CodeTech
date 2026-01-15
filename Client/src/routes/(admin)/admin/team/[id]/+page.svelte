@@ -3,6 +3,7 @@
   import { page } from "$app/stores";
   import { goto } from "$app/navigation";
   import { fly, fade, scale } from "svelte/transition";
+    import { api } from "../../../../../api/api";
 
   let loading = true;
   let activeTab = "overview";
@@ -66,10 +67,7 @@
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      let response = await fetch(
-        `http://localhost:5173/api/employee/${employeeId}`,
-      );
-      let { success, data } = await response.json();
+      let {error,errorMsg,data} = await api.getEmployeeForId({employeeId})
       console.log('data',data)
       // Mock employee data - Replace with actual API call
       employee = data

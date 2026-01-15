@@ -1,7 +1,7 @@
 <script>
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import { authStore } from '$lib/stores/auth';
+    import { api } from '../../../../api/api';
 
   let email = 'admin@company.com';
   let password = 'admin123';
@@ -10,9 +10,7 @@
   let showPassword = false;
 
   onMount(() => {
-    if ($authStore && $authStore.role === 'admin') {
-      goto('/admin/dashboard');
-    }
+    console.log('onMount is called')
   });
 
   async function handleLogin() {
@@ -20,26 +18,12 @@
     loading = true;
 
     try {
-      const response = await fetch('/api/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, role: 'admin' })
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        if (data.user.role !== 'admin') {
-          error = 'Access denied. Admin credentials required.';
-          loading = false;
-          return;
-        }
-        
-        authStore.login(data.user);
-        goto('/admin/dashboard');
-      } else {
-        error = data.message || 'Invalid admin credentials';
+     let {error,errorMsg,token,user} = await api.adminLogin({email,password,role:'admin'})
+      if(error) {
+        return
       }
+
+      goto('/admin/dashboard');
     } catch (err) {
       error = 'Network error. Please try again.';
       console.error('Login error:', err);

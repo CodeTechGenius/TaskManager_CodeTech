@@ -15,3 +15,13 @@ https://the-treding-bulls-h5c0fbxiu-eagle-eye-services-projects.vercel.app/
 ###
 GET https://the-treding-bulls.vercel.app/api/user
 Content-Type: application/json
+
+###
+POST http://localhost:5173/api/auth HTTP/1.1
+Content-Type: application/json
+
+{
+    "email":"admin@gmail.com",
+    "password":"Admin@2026",
+    "role":"admin"
+}
