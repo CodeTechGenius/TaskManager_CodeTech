@@ -1,19 +1,11 @@
 <script>
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import { authStore } from '$lib/stores/auth';
 
   let isVisible = false;
 
   onMount(() => {
-    // Redirect if already logged in
-    if ($authStore) {
-      if ($authStore.role === 'admin') {
-        goto('/');
-      } else {
-        goto('/');
-      }
-    }
+   
 
     // Fade in animation
     setTimeout(() => {
