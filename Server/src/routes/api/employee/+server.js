@@ -177,30 +177,11 @@ export async function GET() {
   }
 
   /* -------------------- 2️⃣ Supabase SELECT (FALLBACK) -------------------- */
-  if (!pgData) {
-    try {
-      const { data, error } = await supabase
-        .from('employees')
-        .select('*');
-
-      if (error) throw error;
-      supabaseData = data;
-    } catch (sbError) {
-      console.error('Supabase fetch failed:', sbError.message);
-    }
-  }
 
   /* -------------------- 3️⃣ RETURN PRIORITY RESULT -------------------- */
   if (pgData) {
     return json(
       { success: true, source: 'postgres', data: pgData },
-      { headers: corsHeaders }
-    );
-  }
-
-  if (supabaseData) {
-    return json(
-      { success: true, source: 'supabase', data: supabaseData },
       { headers: corsHeaders }
     );
   }

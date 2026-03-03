@@ -1,7 +1,5 @@
 import { json } from '@sveltejs/kit';
 import { pool } from '$lib/server/pgdb';
-import { supabase } from '$lib/server/supabase';
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { env } from '$env/dynamic/private';
 let JWT_SECRET = env.JWT_SECRET
@@ -69,28 +67,6 @@ export async function POST({ request }) {
       console.error('PostgreSQL login failed:', pgErr.message);
     }
     console.log('user is',user)
-    /* =====================================================
-       2️⃣ SUPABASE LOGIN (FALLBACK)
-    ===================================================== */
-    if (user == null) {
-      try {
-        const { data, error } = await supabase
-          .from('users')
-          .select('id, name, email, password, role')
-          .eq('email', email)
-          .eq('role', role)
-          .eq('is_active', true)
-          .single();
-
-        if (!error && data) {
-            user = data;
-            source = 'supabase';
-        }
-      } catch (sbErr) {
-        console.error('Supabase login failed:', sbErr.message);
-      }
-    }
-
     /* =====================================================
        3️⃣ INVALID CREDENTIALS
     ===================================================== */

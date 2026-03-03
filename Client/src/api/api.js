@@ -44,7 +44,7 @@ const adminLogin = async ({ email, password, role }) => {
   }
 };
 
-const getEmployees = async ({}) => {
+const getEmployees = async ({ }) => {
   try {
     let response = await fetch(`${serverUrl}/api/employee`)
 
@@ -117,16 +117,102 @@ const getEmployeeForId = async ({ employeeId }) => {
       data
     };
   } catch (e) {
-    console.log('error in getEmployeeId',e)
+    console.log('error in getEmployeeId', e)
     return {
-      error:-1,errorMsg:e
+      error: -1, errorMsg: e
     }
   }
 }
 
+const addProject = async ({ projectData }) => {
+  try {
+    const response = await fetch(`${serverUrl}/api/projects`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(projectData),
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      return {
+        error: 1,
+        errorMsg: result?.error,
+      };
+    }
+
+    let { error, id } = result
+    return {
+      error,
+      id
+    };
+  } catch (e) {
+    console.error('Error in admin login:', e);
+
+    return {
+      error: -1,
+      errorMsg: e.message || 'Unexpected error occurred',
+    };
+  }
+};
+
+const getProjects = async ({ params }) => {
+  try {
+
+    const response = await fetch(`${serverUrl}/api/projects?${params.toString()}`);
+    const result = await response.json();
+
+    if (!response.ok) {
+      return {
+        error: 1,
+        errorMsg: result?.error,
+      };
+    }
+
+    let { success, source, data } = result
+    return {
+      error: 0,
+      errorMsg: '',
+      data
+    };
+  } catch (e) {
+    console.log('error in getEmployeeId', e)
+    return {
+      error: -1, errorMsg: e
+    }
+  }
+}
+
+const getProjectById = async ({ projectId }) => {
+  try {
+    const response = await fetch(`${serverUrl}/api/projects/${projectId}`);
+    const result = await response.json();
+
+    if (!response.ok) {
+      return {
+        error: 1,
+        errorMsg: result?.error,
+      };
+    }
+
+    let { success, source, data } = result
+    return {
+      error: 0,
+      errorMsg: '',
+      data
+    };
+  } catch (e) {
+    console.log('error in getProjectId', e)
+    return {
+      error: -1, errorMsg: e
+    }
+  }
+}
 export let api = {
   adminLogin,
   getEmployees,
   addEmployee,
-  getEmployeeForId
+  getEmployeeForId,
+  addProject,
+  getProjects,
+  getProjectById
 }
