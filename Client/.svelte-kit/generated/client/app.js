@@ -24,31 +24,34 @@ export const nodes = [
 	() => import('./nodes/20'),
 	() => import('./nodes/21'),
 	() => import('./nodes/22'),
-	() => import('./nodes/23')
+	() => import('./nodes/23'),
+	() => import('./nodes/24'),
+	() => import('./nodes/25')
 ];
 
 export const server_loads = [];
 
 export const dictionary = {
-		"/(auth)": [16,[3]],
-		"/(admin)/admin/dashboard": [5,[2]],
-		"/(admin)/admin/profile": [6,[2]],
-		"/(admin)/admin/projects": [7,[2]],
-		"/(admin)/admin/projects/new": [8,[2]],
+		"/(auth)": [17,[3]],
+		"/(admin)/admin/dashboard": [6,[2]],
+		"/(admin)/admin/profile": [7,[2]],
+		"/(admin)/admin/projects": [8,[2]],
+		"/(admin)/admin/projects/new": [10,[2]],
 		"/(admin)/admin/projects/[id]": [9,[2]],
-		"/(admin)/admin/reports": [10,[2]],
-		"/(admin)/admin/tasks": [11,[2]],
-		"/(admin)/admin/tasks/new": [12,[2]],
+		"/(admin)/admin/reports": [11,[2]],
+		"/(admin)/admin/tasks": [12,[2]],
+		"/(admin)/admin/tasks/new": [14,[2]],
 		"/(admin)/admin/tasks/[id]": [13,[2]],
-		"/(admin)/admin/team": [14,[2]],
-		"/(admin)/admin/team/[id]": [15,[2]],
-		"/(employee)/employee/dashboard": [19,[4]],
-		"/(employee)/employee/profile": [20,[4]],
-		"/(employee)/employee/projects": [21,[4]],
-		"/(employee)/employee/tasks": [22,[4]],
-		"/(employee)/employee/timesheet": [23,[4]],
-		"/(auth)/login/admin": [17,[3]],
-		"/(auth)/login/employee": [18,[3]]
+		"/(admin)/admin/team": [15,[2]],
+		"/(admin)/admin/team/[id]": [16,[2]],
+		"/(employee)/employee/dashboard": [20,[4]],
+		"/(employee)/employee/profile": [21,[4]],
+		"/(employee)/employee/projects": [22,[4]],
+		"/(employee)/employee/tasks": [23,[4]],
+		"/(employee)/employee/timesheet": [24,[4]],
+		"/(auth)/login/admin": [18,[3]],
+		"/(auth)/login/employee": [19,[3]],
+		"/(superadmin)/superadmin": [25,[5]]
 	};
 
 export const hooks = {

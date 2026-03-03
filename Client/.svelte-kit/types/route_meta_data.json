@@ -1,4 +1,5 @@
 {
+	"/(superadmin)": [],
 	"/(auth)": [],
 	"/": [],
 	"/(admin)/admin": [],
@@ -20,5 +21,6 @@
 	"/(employee)/employee/tasks": [],
 	"/(employee)/employee/timesheet": [],
 	"/(auth)/login/admin": [],
-	"/(auth)/login/employee": []
+	"/(auth)/login/employee": [],
+	"/(superadmin)/superadmin": []
 }
